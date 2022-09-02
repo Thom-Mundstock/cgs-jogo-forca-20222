@@ -1,24 +1,29 @@
 import java.util.Scanner;
+import java.util.Random;
 
 public class JogoForca {
-    public static void main (String[] args) {
+    public static void main(String[] args) {
         System.out.println("===============");
         System.out.println(" Jogo da Forca ");
         System.out.println("===============");
 
         Scanner in = new Scanner(System.in);
 
+        Random rnd = new Random();
+
         // Configurar jogo
         String[] bancoPalavras = {
-            "ABACATE",
-            "MANGA",
-            "MELANCIA",
-            "JABUTICABA",
-            "BANANA",
-            "PESSEGO",
+                "ABACATE",
+                "MANGA",
+                "MELANCIA",
+                "JABUTICABA",
+                "BANANA",
+                "PESSEGO",
+                "MORANGO",
+                "PERA"
         };
 
-        int indicePalavraSorteada = 2;
+        int indicePalavraSorteada = rnd.nextInt(bancoPalavras.length);
         int chancesRestantes = 10;
         String palavraSorteada = bancoPalavras[indicePalavraSorteada];
         int tamPalavraSorteada = palavraSorteada.length();
@@ -28,11 +33,10 @@ public class JogoForca {
             letrasReveladas[i] = '?';
         }
 
-
-		// Loop do jogo
+        // Loop do jogo
         while (chancesRestantes > 0) {
             System.out.println("\nChances restantes: " + chancesRestantes);
-            
+
             // Mostra letras ja reveladas
             for (int i = 0; i < tamPalavraSorteada; i++) {
                 System.out.print(letrasReveladas[i]);
@@ -52,8 +56,8 @@ public class JogoForca {
                     letrasReveladas[i] = letrasEscondidas[i];
                 }
             }
-            
-			// Reduz nro de chances se letra digitada nao existir.
+
+            // Reduz nro de chances se letra digitada nao existir.
             if (letraEncontrada) {
                 chancesRestantes--;
             }
@@ -64,7 +68,5 @@ public class JogoForca {
         System.out.println("===========");
 
     }
-
-
 
 }
